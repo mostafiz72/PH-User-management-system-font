@@ -7,6 +7,7 @@ export default function SingleMovie({ movies }) {
     const handleDetails = (id) => {
         console.log(id);
     }
+
     return (
         <>
             <div>
