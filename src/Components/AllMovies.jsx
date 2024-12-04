@@ -6,6 +6,9 @@ export default function AllMovies() {
   const allMovie = useLoaderData();
 
   const [allMovieData, setAllMovieData] = useState(allMovie);
+  const [search, setSearch] = useState("");
+  console.log(search);
+  
 
 /// sorting functationality starts here now....
 
@@ -18,9 +21,12 @@ export default function AllMovies() {
   return (
     <>
       <div className=' container mx-auto'>
-        <div className=' flex justify-between items-center my-5'>
+        <div className=' flex justify-between items-center my-10'>
           <div>
-            <h2 className=' text-xl font-bold'>All Category Data ({allMovieData.length}) </h2>
+            <h2 className=' text-xl font-bold'>All Movie Data ({allMovieData.length}) </h2>
+          </div>
+          <div className=' w-96'>
+          <input type="text" onChange={e=> setSearch(e.target.value)}  placeholder="Search Movie" className="input input-bordered w-full" />
           </div>
           <div><button onClick={()=>handleSort()} className=' btn btn-accent text-white'>Sort by Ratting</button></div>
         </div>

@@ -16,6 +16,7 @@ import ErrorPage from './Components/ErrorPage.jsx';
 import Login from './Components/LoginPages/Login.jsx';
 import Register from './Components/LoginPages/Register.jsx';
 import MoviesDetails from './Components/MovieDetails/MoviesDetails.jsx';
+import UpdateMovie from './Components/UpdateMovies/UpdateMovie.jsx';
 
 const router = createBrowserRouter([
   {
@@ -39,6 +40,11 @@ const router = createBrowserRouter([
       {
         path: "/addmovies",
         element: <AddMovies />,
+      },
+      {
+        path: "/updatemovie/:id",
+        element: <UpdateMovie />,
+        loader: ({ params })=> fetch(`http://localhost:3000/details/${params.id}`)
       },
       {
         path: "/favoritesmovies",
