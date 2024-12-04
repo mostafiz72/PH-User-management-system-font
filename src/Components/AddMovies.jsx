@@ -7,34 +7,25 @@ export default function AddMovies() {
     const handleSubmit = (e) => {
         e.preventDefault();
         const form = e.target;
-        const name = form.name.value;
-        const Chef = form.Chef.value;
-        const Supplier = form.Supplier.value;
-        const Taste = form.Taste.value;
-        const Category = form.Category.value;
-        const Details = form.Details.value;
-        const Photo = form.url.value;
-        const UserInfo = { name, Chef, Supplier, Taste, Category, Details, Photo }
-        console.log(UserInfo);
-        form.reset();
+        const photo = form.photo.value;
+        const title = form.title.value;
+        const genry = form.genry.value;
+        const duration = form.duration.value;
+        const year = form.year.value;
+        const ratting = form.ratting.value;
+        const MovieInfo = { photo, title, genry, duration, year, ratting }
+        console.log(MovieInfo);
+        // form.reset();
 
-        // fetch('http://localhost:5000/coffe', {
-        //   method: 'POST',
-        //   headers: { 'Content-Type': 'application/json' },
-        //   body: JSON.stringify(UserInfo)
-        // })
-        // .then(res => res.json())
-        // .then(data => {
-        //   console.log(data);
-        //   if(data.insertedId){
-        //     Swal.fire({
-        //       title: 'Success',
-        //       text: 'User Added Successfully',
-        //       icon: 'success',
-        //       confirmButtonText: 'Ok'
-        //     })
-        //   }
-        // })
+        fetch('http://localhost:3000/movie', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(MovieInfo)
+        })
+        .then(res => res.json())
+        .then(data => {
+          console.log(data);
+        })
 
 
     }
@@ -52,13 +43,13 @@ export default function AddMovies() {
                                 <label className="label">
                                     <span className="label-text font-bold">Movie URL</span>
                                 </label>
-                                <input name='name' type="text" placeholder="Movie URL" className="input input-bordered" required />
+                                <input name='photo' type="text" placeholder="Movie URL" className="input input-bordered" required />
                             </div>
                             <div className="form-control w-full">
                                 <label className="label">
-                                    <span className="label-text font-bold">Movie Poster</span>
+                                    <span className="label-text font-bold">Movie Title</span>
                                 </label>
-                                <input name='name' type="text" placeholder="Movie title" className="input input-bordered" required />
+                                <input name='title' type="text" placeholder="Movie title" className="input input-bordered" required />
                                 </div>
                         </div>
                         {/* 2nd value collection */}
@@ -67,18 +58,18 @@ export default function AddMovies() {
                                 <label className="label">
                                     <span className="label-text font-bold">Movie Genre</span>
                                 </label>
-                                <select className=' p-3 bg-transparent border-2 rounded-md text-semibold outline-none border-gray-700 focus:ring-2 focus:ring-gray-700' name="" id="">
-                                    <option value="Select">Select</option>
-                                    <option value="">Comedy</option>
-                                    <option value="">Drama</option>
-                                    <option value="">Horror</option>
+                                <select className=' p-3 bg-transparent border-2 rounded-md text-semibold outline-none border-gray-700 focus:ring-2 focus:ring-gray-700' name="genry" id="">
+                                    <option value="Select">Select Ganry</option>
+                                    <option value="comedy">Comedy</option>
+                                    <option value="drama">Drama</option>
+                                    <option value="horror">Horror</option>
                                 </select>
                                 </div>
                             <div className="form-control w-full">
                                 <label className="label">
                                     <span className="label-text">Movie Duration</span>
                                 </label>
-                                <input name='name' type="number" placeholder="Movie duration" className="input input-bordered" required />
+                                <input name='duration' type="number" placeholder="Movie duration" className="input input-bordered" required />
                             </div>
                         </div>
                         {/* 3rd value collection */}
@@ -87,18 +78,20 @@ export default function AddMovies() {
                                 <label className="label">
                                     <span className="label-text font-bold">Movie Release Year</span>
                                 </label>
-                                <select className=' p-3 bg-transparent border-2 rounded-md text-semibold outline-none border-gray-700 focus:ring-2 focus:ring-gray-700' name="" id="">
-                                    <option value="Select">Release Year</option>
-                                    <option value="">2024</option>
-                                    <option value="">2023</option>
-                                    <option value="">2022</option>
+                                <select className=' p-3 bg-transparent border-2 rounded-md text-semibold outline-none border-gray-700 focus:ring-2 focus:ring-gray-700' name="year" id="">
+                                    <option value="Select">Select Release Year</option>
+                                    <option value="2024">2024</option>
+                                    <option value="2023">2023</option>
+                                    <option value="2022">2022</option>
+                                    <option value="2021">2021</option>
+                                    <option value="2020">2020</option>
                                 </select>
                                 </div>
                             <div className="form-control w-full">
                                 <label className="label">
                                     <span className="label-text font-bold">Movie Ratting</span>
                                 </label>
-                                <input name='name' type="number" placeholder="Movie Ratting" className="input input-bordered" required />
+                                <input name='ratting' type="number" placeholder="Movie Ratting" className="input input-bordered" required />
                             </div>
                         </div>
 
