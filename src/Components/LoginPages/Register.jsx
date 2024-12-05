@@ -1,9 +1,12 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { FaGoogle } from 'react-icons/fa6';
 import { IoMdClose, IoMdEyeOff } from 'react-icons/io'
 import { Link } from 'react-router-dom'
+import { AuthContext } from '../../AuthProviders/AuthProvider';
 
 export default function Register() {
+
+  const { signUpWithGoogle } = useContext(AuthContext)
 
    const handleSubmit = (e)=>{
     e.preventDefault();
@@ -13,6 +16,19 @@ export default function Register() {
     // make an API call to authenticate user with email and password
     // if successful, redirect to dashboard
     // else, display error message
+  }
+
+  // singUp with google functionality starting --------------
+
+  const loginWithGoogle = ()=> {
+    signUpWithGoogle()
+    .then(data => {
+      console.log(data.user.email)
+    })
+    .catch(err => {
+      console.log(err);
+      
+    })
   }
 
   return (
@@ -51,7 +67,7 @@ export default function Register() {
               <p className=' text-right mb-5 font-semibold'>Allready Have An Account ? <Link to="/login" className="text-red-500 hover:underline">Login</Link></p>
               <button className="btn btn-primary">Register</button>
               <span className=' text-xl my-3 text-center'>or</span>
-              <button className=' btn btn-secoundary'> <span className=' text-yellow-400 text-lg'><FaGoogle /></span> Login Wtih Google</button>
+              <button onClick={loginWithGoogle} className=' btn btn-secoundary'> <span className=' text-yellow-400 text-lg'><FaGoogle /></span> Login Wtih Google</button>
             </div>
           </form>
         </div>

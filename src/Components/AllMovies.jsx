@@ -7,7 +7,6 @@ export default function AllMovies() {
 
   const [allMovieData, setAllMovieData] = useState(allMovie);
   const [search, setSearch] = useState("");
-  console.log(search);
   
 
 /// sorting functationality starts here now....
