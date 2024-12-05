@@ -44,7 +44,7 @@ export default function Login() {
               <input type="text" name='password' placeholder="password" className="input input-bordered" required />
               <button className=' text-xl absolute top-[52px] right-5'><IoMdEyeOff /></button>
               <label className="label">
-                <Link to="/forget" className="label-text-alt link link-hover">Forgot password?</Link>
+                <Link to="" className="label-text-alt link link-hover">Forgot password?</Link>
               </label>
             </div>
             <div className="form-control flex flex-col justify-center w-full">

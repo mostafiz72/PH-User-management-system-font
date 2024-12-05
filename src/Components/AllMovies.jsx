@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useLoaderData } from 'react-router-dom'
 import SingleMovie from './SingleMovie';
 
@@ -17,6 +17,16 @@ export default function AllMovies() {
     setAllMovieData(sortedMovies);    
    }
 
+   //// Search the under all movies and show to search releted data
+
+   useEffect(()=>{
+      fetch(`http://localhost:3000/movie?searchParams=${search}`)
+       .then(res => res.json())
+       .then(data => {
+         setAllMovieData(data);
+       })
+   }, [search])
+
   
   return (
     <>
@@ -32,7 +42,7 @@ export default function AllMovies() {
         </div>
 
         <div className=' grid grid-cols-3 gap-10'>
-          {allMovieData.map(movies => <SingleMovie key={movies._id} movies={movies}></SingleMovie>)}
+          {allMovieData.length? allMovieData.map(movies => <SingleMovie key={movies._id} movies={movies}></SingleMovie>) : <h2 className=' text-3xl font-semibold'>Data not found</h2>}
         </div>
       </div>
     </>
