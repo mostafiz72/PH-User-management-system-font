@@ -3,19 +3,45 @@ import { FaGoogle } from 'react-icons/fa6';
 import { IoMdClose, IoMdEyeOff } from 'react-icons/io'
 import { Link } from 'react-router-dom'
 import { AuthContext } from '../../AuthProviders/AuthProvider';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function Register() {
 
-  const { signUpWithGoogle } = useContext(AuthContext)
+  const { signUpWithGoogle, setUser } = useContext(AuthContext)
 
    const handleSubmit = (e)=>{
     e.preventDefault();
-    // const form = e.target;
-    // const email = form.email.value;
-    // const password = form.password.value;
-    // make an API call to authenticate user with email and password
-    // if successful, redirect to dashboard
-    // else, display error message
+    const form = e.target;
+    const name = form.name.value;
+    const email = form.email.value;
+    const userPhoto = form.photo.value;
+    const password = form.password.value;
+    
+    if (password.length < 6) {
+      toast.error("Password must be at least 6 characters long.");
+      return;
+  }
+  if (!/[A-Z]/.test(password)) {
+    toast.error("Password must contain at least one uppercase letter.");
+    return;
+}
+  if (!/[a-z]/.test(password)) {
+    toast.error("Password must contain at least one lowercase letter.");
+    return;
+}
+    const userInfo = { name, email, userPhoto, password };
+    console.log(userInfo);
+    fetch('http://localhost:3000/movie', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(userInfo)
+    })
+    .then(res => res.json())
+    .then(data => {
+      toast.success("Register successfully")
+    })
+    
   }
 
   // singUp with google functionality starting --------------
@@ -23,7 +49,7 @@ export default function Register() {
   const loginWithGoogle = ()=> {
     signUpWithGoogle()
     .then(data => {
-      console.log(data.user.email)
+      setUser(data.user)
     })
     .catch(err => {
       console.log(err);
@@ -31,8 +57,10 @@ export default function Register() {
     })
   }
 
+
   return (
     <>
+    <ToastContainer position='top-center' />
       <div className=' flex justify-center items-center h-screen'>
         <div className="card bg-base-100 w-full max-w-xl shrink-0 shadow-2xl relative">
           <h2 className=' text-center font-bold  text-2xl mt-5'>Login From</h2>
@@ -67,7 +95,7 @@ export default function Register() {
               <p className=' text-right mb-5 font-semibold'>Allready Have An Account ? <Link to="/login" className="text-red-500 hover:underline">Login</Link></p>
               <button className="btn btn-primary">Register</button>
               <span className=' text-xl my-3 text-center'>or</span>
-              <button onClick={loginWithGoogle} className=' btn btn-secoundary'> <span className=' text-yellow-400 text-lg'><FaGoogle /></span> Login Wtih Google</button>
+              <button onClick={loginWithGoogle} className=' btn btn-info'> <span className=' text-yellow-400 text-lg'><FaGoogle /></span> SignUp Wtih Google</button>
             </div>
           </form>
         </div>

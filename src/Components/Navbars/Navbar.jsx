@@ -1,9 +1,21 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { FaBarsStaggered } from 'react-icons/fa6';
 import { IoMdClose } from 'react-icons/io';
 import { Link, NavLink } from 'react-router-dom';
+import { AuthContext } from '../../AuthProviders/AuthProvider';
+import { MdLogout } from 'react-icons/md';
+import { FaRegUserCircle } from 'react-icons/fa';
 
 export default function Navbar() {
+
+  const { user, signOutUser } = useContext(AuthContext);
+
+  const handleSignOut = ()=>{
+    signOutUser()
+    toast.info("logout completed")
+    
+  }
+
   return (
     <>
        <div className={`bg-gray-200 font-semibold absolute top-0 -left-80 min-h-screen duration-200 w-80 z-50 p-4 `}> {/*${show && "left-[0px]" } ${!show?"-left-80": ""}*/}
@@ -42,17 +54,20 @@ export default function Navbar() {
                 </div>
               {/* {user && user.email? <img className=' w-10 h-10 rounded-full' src={user.photoURL} alt="" /> : <img src={profileLogo} alt="" />}  */}
             </div>
-            {/* {
-              user?
+            <div>
+                  {user && user.email?<img title={user.displayName} className=' cursor-pointer w-10 h-10 rounded-full object-cover' src={user.photoURL} alt="" /> : <span className=' text-4xl'><FaRegUserCircle /></span>}
+            </div>
+            {
+              user && user.email?
               <button onClick={handleSignOut} className=' btn btn-error cursor-pointer'><MdLogout />Log-Out</button>
               :
               <div className=' flex justify-center items-center gap-3'>
                  <div><Link to="/login" className=' btn btn-accent cursor-pointer'>Login</Link></div>
                  <div><Link to="/register" className=' btn btn-success cursor-pointer text-white'>Register</Link></div>
                  </div>
-                 } */}
-                 <div><Link to="/login" className=' btn btn-info cursor-pointer text-white'>Log-In</Link></div>
-                 <div><Link to="/register" className=' btn btn-primary cursor-pointer text-white'>Register</Link></div>
+                 }
+                 {/* <div><Link to="/login" className=' btn btn-info cursor-pointer text-white'>Log-In</Link></div>
+                 <div><Link to="/register" className=' btn btn-primary cursor-pointer text-white'>Register</Link></div> */}
         </div>
       </nav>
     </>

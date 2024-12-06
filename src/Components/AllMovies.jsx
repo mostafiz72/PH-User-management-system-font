@@ -4,6 +4,7 @@ import SingleMovie from './SingleMovie';
 
 export default function AllMovies() {
   const allMovie = useLoaderData();
+  
 
   const [allMovieData, setAllMovieData] = useState(allMovie);
   const [search, setSearch] = useState("");
