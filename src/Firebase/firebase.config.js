@@ -3,6 +3,5 @@ import { initializeApp } from "firebase/app";
 
 // Firebase configuration
 
-
 // Initialize Firebase
 export const app = initializeApp(firebaseConfig);

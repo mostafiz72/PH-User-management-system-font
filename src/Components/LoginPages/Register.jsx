@@ -8,7 +8,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 export default function Register() {
 
-  const { signUpWithGoogle, setUser } = useContext(AuthContext)
+  const { signUpWithGoogle, setUser, setUserEmail } = useContext(AuthContext)
 
    const handleSubmit = (e)=>{
     e.preventDefault();
@@ -30,7 +30,7 @@ export default function Register() {
     toast.error("Password must contain at least one lowercase letter.");
     return;
 }
-    const userInfo = { name, email, userPhoto, password };
+    const userInfo = { name, email, userPhoto,};
     console.log(userInfo);
     fetch('http://localhost:3000/movie', {
       method: 'POST',
@@ -40,6 +40,7 @@ export default function Register() {
     .then(res => res.json())
     .then(data => {
       toast.success("Register successfully")
+      setUserEmail(email)
     })
     
   }

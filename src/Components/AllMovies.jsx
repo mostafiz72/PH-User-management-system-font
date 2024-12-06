@@ -30,7 +30,7 @@ export default function AllMovies() {
   
   return (
     <>
-      <div className=' container mx-auto'>
+      <div className=' container mx-auto min-h-screen'>
         <div className=' flex justify-between items-center my-10'>
           <div>
             <h2 className=' text-xl font-bold'>All Movie Data ({allMovieData.length}) </h2>

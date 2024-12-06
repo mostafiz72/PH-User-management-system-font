@@ -1,9 +1,11 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { IoMdClose, IoMdEye, IoMdEyeOff } from 'react-icons/io';
 import { Link, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import { AuthContext } from '../AuthProviders/AuthProvider';
 
 export default function AddMovies() {
+    const { userEmail } = useContext(AuthContext);
     const Navigate = useNavigate();
 
     const handleSubmit = (e) => {
@@ -65,7 +67,7 @@ export default function AddMovies() {
                     return;
                 }
 
-        const MovieInfo = { photo, title, genry, duration, year, ratting, summary }
+        const MovieInfo = { photo, title, genry, duration, year, ratting, summary, userEmail }
         console.log(MovieInfo);
 
         fetch('http://localhost:3000/movie', {

@@ -9,7 +9,9 @@ export default function AuthProvider( { children } ) {
 
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
-  console.log(user);
+  const [dark, setDark] = useState(false);
+  const [ userEmail, setUserEmail ] = useState("");
+  console.log(user, userEmail);
   
 
   /// signUp with google functionality starting ------------------------------
@@ -32,7 +34,11 @@ export default function AuthProvider( { children } ) {
     loading,
     setLoading,
     signUpWithGoogle,
-    signOutUser
+    signOutUser,
+    userEmail,
+    setUserEmail,
+    dark,
+    setDark
    }
 
 

@@ -1,9 +1,11 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { AuthContext } from '../../AuthProviders/AuthProvider'
 
 export default function Footer() {
+    const { dark, setDark } = useContext(AuthContext);
     return (
         <>
-            <div>
+            <div className={`${dark? 'bg-slate-600' : ''}`}>
                 <footer
                     className="relative z-10 dark:bg-dark pt-20 pb-10 lg:pt-[120px] lg:pb-20"
                 >
@@ -11,24 +13,13 @@ export default function Footer() {
                         <div className="flex flex-wrap -mx-4">
                             <div className="w-full px-4 sm:w-2/3 lg:w-3/12">
                                 <div className="w-full mb-10">
-                                    <a
-                                        href="javascript:void(0)"
-                                        className="mb-6 inline-block max-w-[160px]"
+                                    <h3
+                                        className="mb-6 text-3xl font-bold inline-block max-w-full"
                                     >
-                                        <img
-                                            src="https://cdn.tailgrids.com/2.0/image/assets/images/logo/logo.svg"
-                                            alt="logo"
-                                            className="max-w-full dark:hidden"
-                                        />
-                                        <img
-                                            src="https://cdn.tailgrids.com/2.0/image/assets/images/logo/logo-white.svg"
-                                            alt="logo"
-                                            className="max-w-full hidden dark:block"
-                                        />
-                                    </a>
+                                      Movie Portal
+                                    </h3>
                                     <p className="text-base text-body-color dark:text-dark-6 mb-7">
-                                        Sed ut perspiciatis undmnis is iste natus error sit amet
-                                        voluptatem totam rem aperiam.
+                                    A movie portal is a web or mobile application that serves as a platform for users to explore, discover, and engage with movies and related content.
                                     </p>
                                     <p
                                         className="flex items-center text-sm font-medium text-dark dark:text-white"
@@ -74,7 +65,7 @@ export default function Footer() {
                                     <ul className="space-y-3">
                                         <li>
                                             <a
-                                                href="javascript:void(0)"
+                                                href="#"
                                                 className="inline-block text-base leading-loose text-body-color hover:text-primary dark:text-dark-6"
                                             >
                                                 SaaS Development
@@ -82,7 +73,7 @@ export default function Footer() {
                                         </li>
                                         <li>
                                             <a
-                                                href="javascript:void(0)"
+                                                href="#"
                                                 className="inline-block text-base leading-loose text-body-color hover:text-primary dark:text-dark-6"
                                             >
                                                 Our Products
@@ -90,7 +81,7 @@ export default function Footer() {
                                         </li>
                                         <li>
                                             <a
-                                                href="javascript:void(0)"
+                                                href="#"
                                                 className="inline-block text-base leading-loose text-body-color hover:text-primary dark:text-dark-6"
                                             >
                                                 User Flow
@@ -98,7 +89,7 @@ export default function Footer() {
                                         </li>
                                         <li>
                                             <a
-                                                href="javascript:void(0)"
+                                                href="#"
                                                 className="inline-block text-base leading-loose text-body-color hover:text-primary dark:text-dark-6"
                                             >
                                                 User Strategy
@@ -115,7 +106,7 @@ export default function Footer() {
                                     <ul className="space-y-3">
                                         <li>
                                             <a
-                                                href="javascript:void(0)"
+                                                href="#"
                                                 className="inline-block text-base leading-loose text-body-color hover:text-primary dark:text-dark-6"
                                             >
                                                 About TailGrids
@@ -123,7 +114,7 @@ export default function Footer() {
                                         </li>
                                         <li>
                                             <a
-                                                href="javascript:void(0)"
+                                                href="#"
                                                 className="inline-block text-base leading-loose text-body-color hover:text-primary dark:text-dark-6"
                                             >
                                                 Contact & Support
@@ -131,7 +122,7 @@ export default function Footer() {
                                         </li>
                                         <li>
                                             <a
-                                                href="javascript:void(0)"
+                                                href="#"
                                                 className="inline-block text-base leading-loose text-body-color hover:text-primary dark:text-dark-6"
                                             >
                                                 Success History
@@ -139,7 +130,7 @@ export default function Footer() {
                                         </li>
                                         <li>
                                             <a
-                                                href="javascript:void(0)"
+                                                href="#"
                                                 className="inline-block text-base leading-loose text-body-color hover:text-primary dark:text-dark-6"
                                             >
                                                 Setting & Privacy
@@ -156,7 +147,7 @@ export default function Footer() {
                                     <ul className="space-y-3">
                                         <li>
                                             <a
-                                                href="javascript:void(0)"
+                                                href="#"
                                                 className="inline-block text-base leading-loose text-body-color hover:text-primary dark:text-dark-6"
                                             >
                                                 Premium Support
@@ -164,7 +155,7 @@ export default function Footer() {
                                         </li>
                                         <li>
                                             <a
-                                                href="javascript:void(0)"
+                                                href="#"
                                                 className="inline-block text-base leading-loose text-body-color hover:text-primary dark:text-dark-6"
                                             >
                                                 Our Services
@@ -172,7 +163,7 @@ export default function Footer() {
                                         </li>
                                         <li>
                                             <a
-                                                href="javascript:void(0)"
+                                                href="#"
                                                 className="inline-block text-base leading-loose text-body-color hover:text-primary dark:text-dark-6"
                                             >
                                                 Know Our Team
@@ -180,7 +171,7 @@ export default function Footer() {
                                         </li>
                                         <li>
                                             <a
-                                                href="javascript:void(0)"
+                                                href="#"
                                                 className="inline-block text-base leading-loose text-body-color hover:text-primary dark:text-dark-6"
                                             >
                                                 Download App
@@ -196,7 +187,7 @@ export default function Footer() {
                                     </h4>
                                     <div className="flex items-center mb-6">
                                         <a
-                                            href="javascript:void(0)"
+                                            href="https://facebook.com/" target='_blank'
                                             className="flex items-center justify-center w-8 h-8 mr-3 border rounded-full text-dark hover:border-primary hover:bg-primary border-stroke dark:border-dark-3 dark:hover:border-primary dark:text-white hover:text-white sm:mr-4 lg:mr-3 xl:mr-4"
                                         >
                                             <svg
@@ -211,7 +202,7 @@ export default function Footer() {
                                             </svg>
                                         </a>
                                         <a
-                                            href="javascript:void(0)"
+                                            href="https://twitter.com/" target='_blank'
                                             className="flex items-center justify-center w-8 h-8 mr-3 border rounded-full text-dark hover:border-primary hover:bg-primary border-stroke dark:border-dark-3 dark:hover:border-primary dark:text-white hover:text-white sm:mr-4 lg:mr-3 xl:mr-4"
                                         >
                                             <svg
@@ -226,7 +217,7 @@ export default function Footer() {
                                             </svg>
                                         </a>
                                         <a
-                                            href="javascript:void(0)"
+                                            href="https://youtube.com/" target='_blank'
                                             className="flex items-center justify-center w-8 h-8 mr-3 border rounded-full text-dark hover:border-primary hover:bg-primary border-stroke dark:border-dark-3 dark:hover:border-primary dark:text-white hover:text-white sm:mr-4 lg:mr-3 xl:mr-4"
                                         >
                                             <svg
@@ -241,7 +232,7 @@ export default function Footer() {
                                             </svg>
                                         </a>
                                         <a
-                                            href="javascript:void(0)"
+                                            href="https://www.linkedin.com/" target='_blank'
                                             className="flex items-center justify-center w-8 h-8 mr-3 border rounded-full text-dark hover:border-primary hover:bg-primary border-stroke dark:border-dark-3 dark:hover:border-primary dark:text-white hover:text-white sm:mr-4 lg:mr-3 xl:mr-4"
                                         >
                                             <svg
@@ -256,9 +247,6 @@ export default function Footer() {
                                             </svg>
                                         </a>
                                     </div>
-                                    <p className="text-base text-body-color dark:text-dark-6">
-                                        &copy; 2025 TailGrids
-                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -318,6 +306,11 @@ export default function Footer() {
                                 </defs>
                             </svg>
                         </span>
+                    </div>
+                    <div className='text-center'>
+                    <p className="text-base text-body-color dark:text-dark-6">
+                    &copy; 2024 Movie Portal Designerd by <span className=' font-semibold text-orange-600 cursor-pointer  text-center'>Mostafiz</span>
+                    </p>
                     </div>
                 </footer>
             </div>
