@@ -1,6 +1,6 @@
 import React, { createContext, useEffect, useState } from 'react'
 import { app } from '../Firebase/firebase.config';
-import { getAuth, GoogleAuthProvider, onAuthStateChanged, signInWithPopup, signOut } from "firebase/auth";
+import { createUserWithEmailAndPassword, getAuth, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
 const auth = getAuth(app);
 export const AuthContext = createContext(null)
 const provider = new GoogleAuthProvider();
@@ -13,6 +13,20 @@ export default function AuthProvider( { children } ) {
   const [ userEmail, setUserEmail ] = useState("");
   console.log(user, userEmail);
   
+
+  /// Sign up user in forms useing ----------------------------
+
+  const signUpUser = (email, password)=>{
+    setLoading(true);
+    return createUserWithEmailAndPassword(auth, email, password)
+  }
+
+  // Sign In user useing firebase ----------------------
+
+  const SignInUser = (email, password)=>{
+    setLoading(true);
+    return signInWithEmailAndPassword(auth, email, password)
+   }
 
   /// signUp with google functionality starting ------------------------------
 
@@ -38,7 +52,9 @@ export default function AuthProvider( { children } ) {
     userEmail,
     setUserEmail,
     dark,
-    setDark
+    setDark,
+    signUpUser,
+    SignInUser
    }
 
 

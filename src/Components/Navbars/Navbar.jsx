@@ -42,8 +42,8 @@ export default function Navbar() {
           <ul className=' flex items-center gap-8'>
             <li><NavLink to="/">Home</NavLink></li>
             <li><NavLink to="/allmovives">All Movies</NavLink></li>
-            <li><NavLink to="/addmovies">Add Movie</NavLink></li>
-            {<li><NavLink to="/favoritesmovies">My Favorites</NavLink></li>}
+            {user && user.email? <li><NavLink to="/addmovies">Add Movie</NavLink></li>: ''}
+            {user && user.email ? <li><NavLink to="/favoritesmovies">My Favorites</NavLink></li> : ''}
             {<li><NavLink to="/extraone">Extra section one</NavLink></li>}
             {<li><NavLink to="/extratwo">Extra section two</NavLink></li>}
           </ul>

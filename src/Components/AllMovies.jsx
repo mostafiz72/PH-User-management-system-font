@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { useLoaderData } from 'react-router-dom'
 import SingleMovie from './SingleMovie';
+import Swal from 'sweetalert2';
+import { IoSearchSharp } from 'react-icons/io5';
 
 export default function AllMovies() {
   const allMovie = useLoaderData();
@@ -14,7 +16,14 @@ export default function AllMovies() {
 
   const handleSort = ()=>{
     const sortedMovies = [...allMovieData].sort((a, b) => b.ratting - a.ratting);
-    setAllMovieData(sortedMovies);    
+    setAllMovieData(sortedMovies);
+    Swal.fire({
+      position: "center center",
+      icon: "success",
+      title: "Movie Sorted",
+      showConfirmButton: false,
+      timer: 2500
+    });
    }
 
    //// Search the under all movies and show to search releted data
@@ -36,14 +45,18 @@ export default function AllMovies() {
             <h2 className=' text-xl font-bold'>All Movie Data ({allMovieData.length}) </h2>
           </div>
           <div className=' w-96'>
-          <input type="text" onChange={e=> setSearch(e.target.value)} disabled={!allMovieData.length} placeholder="Search Movie" className="input input-bordered w-full" />
+          <input type="text" onChange={e=> setSearch(e.target.value)} placeholder="Search Movie" className="input input-bordered w-full" />
           </div>
-          <div><button onClick={()=>handleSort()} className=' btn btn-accent text-white' disabled={!allMovieData.length} >Sort by Ratting</button></div>
+          <div><button onClick={()=>handleSort()} className=' btn btn-accent text-white'>Sort by Ratting</button></div>
         </div>
-
-        <div className=' grid grid-cols-3 gap-10'>
-          {allMovieData.length? allMovieData.map(movies => <SingleMovie key={movies._id} movies={movies}></SingleMovie>) : <h2 className=' text-3xl font-semibold'>Data not found</h2>}
-        </div>
+         
+         {/* Showing the movie data  */}
+         {
+          allMovieData.length?
+          <div className=' grid grid-cols-3 gap-10'>
+          { allMovieData.map(movies => <SingleMovie key={movies._id} movies={movies}></SingleMovie>)}
+        </div> : <div className=' text-3xl font-semibold flex justify-center gap-3 items-center min-h-screen'> <IoSearchSharp /> Not found Movie</div>
+        }
       </div>
     </>
   )

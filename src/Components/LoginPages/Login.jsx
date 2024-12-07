@@ -1,31 +1,37 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { FaGoogle } from 'react-icons/fa6';
 import { IoMdClose, IoMdEyeOff } from 'react-icons/io'
 import { Link } from 'react-router-dom'
+import { AuthContext } from '../../AuthProviders/AuthProvider';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function Login() {
+
+  const { SignInUser, setUser } = useContext(AuthContext);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     // Here you can handle the login logic
-    // const form = new FormData(e.target);  // Nutun vabe input form thek data neuya jai ta amara dekhalam
-    // const email = form.get("email");
-    // const password = form.get("password");
-    // // console.log({ email, password })
+    const form = e.target;  // Nutun vabe input form thek data neuya jai ta amara dekhalam
+    const email = form.email.value;
+    const password = form.password.value;
+    console.log({ email, password })
 
-    // SignInUser(email, password)
-    // .then(result =>{
-    //     setUser(result.user);
-    //     toast.success("Login Succfull")
-    //     Navigate(location?.state ? location.state : "/")
-    // })
-    // .catch(error =>{
-    //     toast.error("Something went wrong " + error.message)
-    // })
+    SignInUser(email, password)
+    .then(result =>{
+        setUser(result.user);
+        toast.success("Login Succfull")
+        // Navigate(location?.state ? location.state : "/")
+    })
+    .catch(error =>{
+        toast.error("Something went wrong " + error.message)
+    })
 }
 
   return (
     <>
+    <ToastContainer position='top-center' />
       <div className=' flex justify-center items-center h-screen'>
         <div className="card bg-base-100 w-full max-w-xl shrink-0 shadow-2xl relative">
           <h2 className=' text-center font-bold  text-2xl mt-5'>Login From</h2>

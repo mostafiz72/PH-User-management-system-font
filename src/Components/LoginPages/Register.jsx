@@ -8,7 +8,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 export default function Register() {
 
-  const { signUpWithGoogle, setUser, setUserEmail } = useContext(AuthContext)
+  const { signUpWithGoogle, setUser, setUserEmail, signUpUser } = useContext(AuthContext)
 
    const handleSubmit = (e)=>{
     e.preventDefault();
@@ -32,16 +32,26 @@ export default function Register() {
 }
     const userInfo = { name, email, userPhoto,};
     console.log(userInfo);
-    fetch('http://localhost:3000/movie', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(userInfo)
-    })
-    .then(res => res.json())
-    .then(data => {
+
+    signUpUser(email, password)
+    .then(res => {
       toast.success("Register successfully")
-      setUserEmail(email)
+      setUser(res.user)
     })
+    .catch(err => {
+      toast.error("Something went wrong " + err.message)
+    })
+
+    // fetch('http://localhost:3000/movie', {
+    //   method: 'POST',
+    //   headers: { 'Content-Type': 'application/json' },
+    //   body: JSON.stringify(userInfo)
+    // })
+    // .then(res => res.json())
+    // .then(data => {
+    //   toast.success("Register successfully")
+    //   setUserEmail(email)
+    // })
     
   }
 
