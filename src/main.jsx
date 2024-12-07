@@ -18,6 +18,7 @@ import Register from './Components/LoginPages/Register.jsx';
 import MoviesDetails from './Components/MovieDetails/MoviesDetails.jsx';
 import UpdateMovie from './Components/UpdateMovies/UpdateMovie.jsx';
 import AuthProvider from './AuthProviders/AuthProvider.jsx';
+import PrivateRoute from './Components/PrivateRoutes/PrivateRoute.jsx';
 
 const router = createBrowserRouter([
   {
@@ -35,7 +36,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/details/:id",
-        element: <MoviesDetails />,
+        element: <PrivateRoute><MoviesDetails /></PrivateRoute>,
         loader: ({ params })=> fetch(`http://localhost:3000/details/${params.id}`)
       },
       {

@@ -10,8 +10,8 @@ export default function AuthProvider( { children } ) {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const [dark, setDark] = useState(false);
-  const [ userEmail, setUserEmail ] = useState("");
-  console.log(user, userEmail);
+  // const [ userEmail, setUserEmail ] = useState("");
+  console.log(user);
   
 
   /// Sign up user in forms useing ----------------------------
@@ -49,8 +49,6 @@ export default function AuthProvider( { children } ) {
     setLoading,
     signUpWithGoogle,
     signOutUser,
-    userEmail,
-    setUserEmail,
     dark,
     setDark,
     signUpUser,
