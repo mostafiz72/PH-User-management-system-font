@@ -50,6 +50,29 @@ export default function MoviesDetails() {
         Navigate(`/updatemovie/${id}`);
     }
 
+    /// favirite functionality starting .................................
+
+    const handleFavirite = ()=>{
+        console.log("handleFavirite is clicked");
+        const faviriteInfo = { photo, title, genry, year, ratting };
+        console.log(faviriteInfo);
+        
+
+        /// faviirte and database hitting .....................
+
+        fetch(`http://localhost:3000/addfavorite`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(faviriteInfo)
+        })
+       .then(response => response.json())
+       .then(data => {
+         console.log(data);
+         
+       })
+        
+    }
+
     return (
         <>
             <div className=' flex flex-col justify-center items-center my-10'>
@@ -71,7 +94,7 @@ export default function MoviesDetails() {
                         <p className="mb-3 font-semibold text-lg text-gray-700 dark:text-gray-400">Ratting: {ratting}</p>
                          <div className=' flex justify-between gap-5 items-center mt-5'>
                          <button onClick={()=> handledelete(_id)} className=' btn btn-error font-semibold text-white'>Delete Movie</button>
-                         <Link to={`/favorite/${_id}`}className=' btn btn-primary font-semibold text-white'>Add to Favorite</Link>
+                         <Link onClick={handleFavirite} className=' btn btn-primary font-semibold text-white'>Add to Favorite</Link>
                          <button onClick={allMovie} className=' btn btn-accent font-semibold text-white'>See all movies</button>
                          </div>
                     </div>

@@ -50,6 +50,7 @@ const router = createBrowserRouter([
       {
         path: "/favoritesmovies",
         element: <FavoritesMovies />,
+        loader: ()=> fetch('http://localhost:3000/addfavorite')
       },
       {
         path: "/extraone",
