@@ -8,7 +8,7 @@ export default function UpdateMovie() {
      const Navigate = useNavigate();
 
     const updateMovies = useLoaderData();
-    const { _id, photo, title, genry, duration, year, ratting } = updateMovies;
+    const { _id, photo, title, genry, duration, year, ratting, summary } = updateMovies;
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -20,7 +20,8 @@ export default function UpdateMovie() {
         const duration = form.duration.value;
         const year = form.year.value;
         const ratting = form.ratting.value;
-        const movieUpdated = { photo, title, genry, duration, year, ratting }
+        const summary = form.summary.value;
+        const movieUpdated = { photo, title, genry, duration, year, ratting, summary }
 
         // Update the movie data in the database
         fetch(`http://localhost:3000/updatemovie/${_id}`, {
@@ -30,6 +31,8 @@ export default function UpdateMovie() {
         })
            .then(res => res.json())
            .then(data => {
+            console.log(data);
+            
             if(data.modifiedCount > 0){
                 Swal.fire({
                     position: "center center",
@@ -108,6 +111,11 @@ export default function UpdateMovie() {
                                 </label>
                                 <input name='ratting' type="number" defaultValue={ratting} placeholder="Movie Ratting" className="input input-bordered" required />
                             </div>
+                        </div>
+                        <div>
+                            <textarea
+                                placeholder="Movie Summary" defaultValue={summary} name='summary' required
+                                className="textarea textarea-bordered textarea-lg w-full"></textarea>
                         </div>
                         <div className="form-control">
                             <button className="btn btn-primary  text-white">Update Movie</button>

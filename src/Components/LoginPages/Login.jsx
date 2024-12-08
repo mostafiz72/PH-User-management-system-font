@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { FaGoogle } from 'react-icons/fa6';
 import { IoMdClose, IoMdEyeOff } from 'react-icons/io'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { AuthContext } from '../../AuthProviders/AuthProvider';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -9,6 +9,7 @@ import 'react-toastify/dist/ReactToastify.css';
 export default function Login() {
 
   const { SignInUser, setUser } = useContext(AuthContext);
+  const Navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -22,7 +23,9 @@ export default function Login() {
     .then(result =>{
         setUser(result.user);
         toast.success("Login Succfull")
-        // Navigate(location?.state ? location.state : "/")
+        setTimeout(()=>{
+          Navigate("/")
+        }, 2000)
     })
     .catch(error =>{
         toast.error("Something went wrong " + error.message)

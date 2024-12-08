@@ -1,6 +1,6 @@
 import React, { createContext, useEffect, useState } from 'react'
 import { app } from '../Firebase/firebase.config';
-import { createUserWithEmailAndPassword, getAuth, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
+import { createUserWithEmailAndPassword, getAuth, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
 const auth = getAuth(app);
 export const AuthContext = createContext(null)
 const provider = new GoogleAuthProvider();
@@ -16,7 +16,7 @@ export default function AuthProvider( { children } ) {
 
   /// Sign up user in forms useing ----------------------------
 
-  const signUpUser = (email, password)=>{
+  const signUpUser = ( email, password)=>{
     setLoading(true);
     return createUserWithEmailAndPassword(auth, email, password)
   }
@@ -42,6 +42,13 @@ export default function AuthProvider( { children } ) {
     return signOut(auth);
    }
 
+      // SignUp and Updata User Info functionality start here now******************************
+
+      const updataprofile = (updatedData)=>{
+        setLoading(true);
+        return updateProfile(auth.currentUser, updatedData)
+       }
+
    const authInfo= {
     user,
     setUser,
@@ -52,7 +59,8 @@ export default function AuthProvider( { children } ) {
     dark,
     setDark,
     signUpUser,
-    SignInUser
+    SignInUser,
+    updataprofile
    }
 
 

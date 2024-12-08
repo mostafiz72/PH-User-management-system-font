@@ -1,21 +1,22 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { FaGoogle } from 'react-icons/fa6';
 import { IoMdClose, IoMdEyeOff } from 'react-icons/io'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { AuthContext } from '../../AuthProviders/AuthProvider';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 export default function Register() {
-
-  const { signUpWithGoogle, setUser, setUserEmail, signUpUser } = useContext(AuthContext)
+  const Navigate = useNavigate();
+  const { signUpWithGoogle, setUser, signUpUser, updataprofile } = useContext(AuthContext)
+  
 
    const handleSubmit = (e)=>{
     e.preventDefault();
     const form = e.target;
     const name = form.name.value;
     const email = form.email.value;
-    const userPhoto = form.photo.value;
+    const photo = form.photo.value;
     const password = form.password.value;
     
     if (password.length < 6) {
@@ -30,13 +31,26 @@ export default function Register() {
     toast.error("Password must contain at least one lowercase letter.");
     return;
 }
-    const userInfo = { name, email, userPhoto,};
+    const userInfo = { name, email, photo, password};
     console.log(userInfo);
 
     signUpUser(email, password)
     .then(res => {
       toast.success("Register successfully")
-      setUser(res.user)
+      setUser(res.user);
+      /// updataed profile functionality starting.................
+      updataprofile({displayName: name, photoURL: photo})
+      .then(result => {
+      })
+      .catch(err => {
+          // console.log(err);
+          toast.error("Failed to update profile: " + err.message)
+          e.target.reset();
+      })
+      
+      setTimeout(()=>{
+        Navigate("/")
+      }, 2000)
     })
     .catch(err => {
       toast.error("Something went wrong " + err.message)

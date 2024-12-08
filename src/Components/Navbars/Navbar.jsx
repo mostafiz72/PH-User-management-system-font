@@ -5,6 +5,8 @@ import { Link, NavLink, useLocation } from 'react-router-dom';
 import { AuthContext } from '../../AuthProviders/AuthProvider';
 import { MdLogout } from 'react-icons/md';
 import { FaRegUserCircle } from 'react-icons/fa';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'
 
 export default function Navbar() {
 
@@ -13,11 +15,13 @@ export default function Navbar() {
 
   const handleSignOut = () => {
     signOutUser()
-    toast.info("logout completed")
+    toast.warning("Logged Out!");
 
   }
 
   return (
+    <>
+    <ToastContainer position='top-center' />
     <div className={dark? 'bg-white': '' }>
       <div className={`bg-gray-200 font-semibold absolute top-0 -left-80 min-h-screen duration-200 w-80 z-50 p-4 `}> {/*${show && "left-[0px]" } ${!show?"-left-80": ""}*/}
         <button className=' absolute top-1 -right-2 w-10 h-10 rounded-full text-gray-800 text-2xl hover:text-red-600'><IoMdClose /></button>
@@ -44,8 +48,8 @@ export default function Navbar() {
             <li><NavLink to="/allmovives">All Movies</NavLink></li>
             {user && user.email? <li><NavLink to="/addmovies">Add Movie</NavLink></li>: ''}
             {user && user.email ? <li><NavLink to="/favoritesmovies">My Favorites</NavLink></li> : ''}
-            {<li><NavLink to="/extraone">Extra section one</NavLink></li>}
-            {<li><NavLink to="/extratwo">Extra section two</NavLink></li>}
+            {<li><NavLink to="/extraone">Present Movie</NavLink></li>}
+            {<li><NavLink to="/extratwo">Movie Shotting</NavLink></li>}
           </ul>
         </div>
         <div className=' flex items-center gap-5'>
@@ -100,5 +104,6 @@ export default function Navbar() {
         </div>
       </nav>
     </div>
+    </>
   )
 }
