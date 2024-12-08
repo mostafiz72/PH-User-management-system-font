@@ -22,7 +22,7 @@ export default function Navbar() {
   return (
     <>
     <ToastContainer position='top-center' />
-    <div className={dark? 'bg-white': '' }>
+    <div className={`${dark? 'bg-white': ''} sticky top-0 z-50 bg-gray-800`} >
       <div className={`bg-gray-200 font-semibold absolute top-0 -left-80 min-h-screen duration-200 w-80 z-50 p-4 `}> {/*${show && "left-[0px]" } ${!show?"-left-80": ""}*/}
         <button className=' absolute top-1 -right-2 w-10 h-10 rounded-full text-gray-800 text-2xl hover:text-red-600'><IoMdClose /></button>
         <nav>

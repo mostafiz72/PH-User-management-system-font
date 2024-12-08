@@ -19,7 +19,7 @@ export default function ExtraPageTwo() {
       </div>
 
       {/* 2nd section start here now */}
-      <div className=' grid grid-cols-3 gap-10 container mx-auto my-20 text-black'>
+      <div className=' grid md:grid-cols-2 lg:grid-cols-3 gap-10 container mx-auto my-20 text-black'>
         <div className=' bg-slate-100 p-5 rounded-md'>
           <img className=' mb-5 h-[600px] object-cover w-full' src="https://gtkit.rometheme.pro/goodmov/wp-content/uploads/sites/50/2024/05/Project-7.jpg" alt="" />
           <h2 className=' text-2xl font-bold'>The Clown (2015)</h2>

@@ -39,12 +39,12 @@ export default function AllMovies() {
   
   return (
     <>
-      <div className=' container mx-auto min-h-screen'>
-        <div className=' flex justify-between items-center my-10'>
+      <div className=' w-96 md:container mx-auto min-h-screen'>
+        <div className=' md:flex justify-between items-center my-10'>
           <div>
             <h2 className=' text-xl font-bold'>All Movie Data ({allMovieData.length}) </h2>
           </div>
-          <div className=' w-96'>
+          <div className=' w-96 my-5 md:my-0'>
           <input type="text" onChange={e=> setSearch(e.target.value)} placeholder="Search Movie" className="input input-bordered w-full" />
           </div>
           <div><button onClick={()=>handleSort()} className=' btn btn-accent text-white'>Sort by Ratting</button></div>
@@ -53,7 +53,7 @@ export default function AllMovies() {
          {/* Showing the movie data  */}
          {
           allMovieData.length?
-          <div className=' grid grid-cols-3 gap-10'>
+          <div className=' grid md:grid-cols-2 lg:grid-cols-3 gap-10'>
           { allMovieData.map(movies => <SingleMovie key={movies._id} movies={movies}></SingleMovie>)}
         </div> : <div className=' text-3xl font-semibold flex justify-center gap-3 items-center min-h-screen'> <IoSearchSharp /> Not found Movie</div>
         }

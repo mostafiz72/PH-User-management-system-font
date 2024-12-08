@@ -10,7 +10,7 @@ export default function Footer() {
                     className="relative z-10 dark:bg-dark pt-20 pb-10 lg:pt-[120px] lg:pb-20"
                 >
                     <div className="container mx-auto">
-                        <div className="flex flex-wrap -mx-4">
+                        <div className=" w-96 mx-auto md:container flex flex-wrap">
                             <div className="w-full px-4 sm:w-2/3 lg:w-3/12">
                                 <div className="w-full mb-10">
                                     <h3
