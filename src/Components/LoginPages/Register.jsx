@@ -75,6 +75,7 @@ export default function Register() {
     signUpWithGoogle()
     .then(data => {
       setUser(data.user)
+      Navigate("/")
     })
     .catch(err => {
       console.log(err);

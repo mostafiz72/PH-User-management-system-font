@@ -12,7 +12,7 @@ export default function FavoritesMovies() {
     <>
     {
       favoriteUpdted.length ? 
-      <div className=' min-h-screen container mx-auto grid grid-cols-3 gap-10'>
+      <div className=' min-h-screen container mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-10'>
       {
         favoriteUpdted.map(favorite => <FavoriteMovieData key={favorite._id} favorite={favorite} setfavoriteUpdated={setfavoriteUpdated} favoriteUpdted={favoriteUpdted}></FavoriteMovieData>)
       }

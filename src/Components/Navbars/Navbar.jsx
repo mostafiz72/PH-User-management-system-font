@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { FaBarsStaggered } from 'react-icons/fa6';
 import { IoMdClose } from 'react-icons/io';
 import { Link, NavLink, useLocation } from 'react-router-dom';
@@ -10,6 +10,7 @@ import 'react-toastify/dist/ReactToastify.css'
 
 export default function Navbar() {
 
+  const [ show, setShow ] = useState(false);
   const { user, signOutUser, dark, setDark } = useContext(AuthContext);
   const location = useLocation();
 
@@ -19,27 +20,32 @@ export default function Navbar() {
 
   }
 
+  const handleHiddenShowing = () => {
+    setShow(!show);
+  }
+
   return (
     <>
     <ToastContainer position='top-center' />
     <div className={`${dark? 'bg-white': ''} sticky top-0 z-50 bg-gray-800`} >
-      <div className={`bg-gray-200 font-semibold absolute top-0 -left-80 min-h-screen duration-200 w-80 z-50 p-4 `}> {/*${show && "left-[0px]" } ${!show?"-left-80": ""}*/}
-        <button className=' absolute top-1 -right-2 w-10 h-10 rounded-full text-gray-800 text-2xl hover:text-red-600'><IoMdClose /></button>
-        <nav>
+    <div className={`bg-gray-800 font-semibold absolute top-0 -left-80 min-h-screen duration-200 w-80 z-50 p-4 ${show && "left-[0px]" } ${!show?"-left-80": ""}`}>
+        <button onClick={handleHiddenShowing} className=' absolute top-1 -right-2 w-10 h-10 rounded-full text-red-600 text-2xl'><IoMdClose /></button>
+          <nav>
           <ul className=' flex flex-col items-start gap-5 mt-5'>
-            <li><NavLink to="/">Home</NavLink></li>
-            <li><NavLink to="/camping">Camping</NavLink></li>
-            <li><NavLink to="/bungeejumping">Bungee Jumping</NavLink></li>
-            {<li><NavLink to="/Profile">Profile</NavLink></li>}
-            {<li><NavLink to="/updata">Updata Profile</NavLink></li>}
-          </ul>
-        </nav>
-      </div>
+                <li><NavLink to="/">Home</NavLink></li>
+                <li><NavLink to="/allmovives">All Movie</NavLink></li>
+                {user && user.email? <li><NavLink to="/addmovies">Add Movie</NavLink></li> : ""}
+                {user && user.email? <li><NavLink to="/favoritesmovies">My Favorite</NavLink></li> : ""}
+                <li><NavLink to="/extraone">Present Movie</NavLink></li>
+                <li><NavLink to="/extratwo">Movie Shotting</NavLink></li>
+            </ul>
+          </nav>
+        </div>
 
       {/* responsive site navbar end here now */}
 
       <nav className=' flex justify-between items-center text-lg font-semibold w-11/12 md:container mx-auto py-5'>
-        <button className=' font-bold text-2xl cursor-pointer md:hidden'><FaBarsStaggered /></button>
+        <button onClick={handleHiddenShowing} className=' font-bold text-2xl cursor-pointer md:hidden'><FaBarsStaggered /></button>
         <Link to="/" className=' font-bold text-xl md:text-2xl cursor-pointer hidden md:block'>Movie Portal</Link>
         {/* ekhane bola hoyse jodi user er mordhe kicu thake ta hole tumi amake tar nam ta show koro na hole error deyo na */}
         <div className=' hidden lg:block'>
