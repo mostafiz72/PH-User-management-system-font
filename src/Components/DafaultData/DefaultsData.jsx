@@ -28,7 +28,7 @@ export default function DefaultsData() {
                                 <p className="mb-3 font-semibold text-lg text-gray-700 dark:text-gray-400">Genry: {data.genry}</p>
                                 <p className="mb-3 font-semibold text-lg text-gray-700 dark:text-gray-400">Duration: {data.duration}</p>
                                 <p className="mb-3 font-semibold text-lg text-gray-700 dark:text-gray-400">Year: {data.year}</p>
-                                <p className="mb-3 font-semibold text-lg text-gray-700 dark:text-gray-400">Ratting: {data.ratting}</p>
+                                <p className="mb-3 font-semibold text-lg text-gray-700 dark:text-gray-400">Ratting: <span className=' bg-gray-700 p-2 rounded-full text-yellow-300'>{data.ratting}</span></p>
                                 <div className=' flex flex-col justify-end items-end'>
                                     <Link to={`/details/${data._id}`} className=' btn btn-primary text-white'>See Details</Link>
                                 </div>

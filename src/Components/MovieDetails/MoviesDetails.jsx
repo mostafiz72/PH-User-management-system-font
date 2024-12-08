@@ -91,7 +91,7 @@ export default function MoviesDetails() {
                         <p className="mb-3 font-semibold text-lg text-gray-700 dark:text-gray-400">Genry: {genry}</p>
                         <p className="mb-3 font-semibold text-lg text-gray-700 dark:text-gray-400">Duration: {duration}</p>
                         <p className="mb-3 font-semibold text-lg text-gray-700 dark:text-gray-400">Year: {year}</p>
-                        <p className="mb-3 font-semibold text-lg text-gray-700 dark:text-gray-400">Ratting: {ratting}</p>
+                        <p className="mb-3 font-semibold text-lg text-gray-700 dark:text-gray-400">Ratting: <span className=' bg-gray-600 p-2 rounded-full'>{ratting}</span></p>
                          <div className=' flex justify-between gap-5 items-center mt-5'>
                          <button onClick={()=> handledelete(_id)} className=' btn btn-error font-semibold text-white'>Delete Movie</button>
                          <Link onClick={handleFavirite} className=' btn btn-primary font-semibold text-white'>Add to Favorite</Link>

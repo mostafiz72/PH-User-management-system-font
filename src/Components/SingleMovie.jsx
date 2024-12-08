@@ -22,7 +22,7 @@ export default function SingleMovie({ movies }) {
                         <p className="mb-3 font-semibold text-lg text-gray-700 dark:text-gray-400">Genry: {genry}</p>
                         <p className="mb-3 font-semibold text-lg text-gray-700 dark:text-gray-400">Duration: {duration}</p>
                         <p className="mb-3 font-semibold text-lg text-gray-700 dark:text-gray-400">Year: {year}</p>
-                        <p className="mb-3 font-semibold text-lg text-gray-700 dark:text-gray-400">Ratting: {ratting}</p>
+                        <p className="mb-3 font-semibold text-lg text-gray-700 dark:text-gray-400 bg-gray">Ratting: <span className=' bg-gray-700 p-2 rounded-full'>{ratting}</span></p>
                          <div className=' flex flex-col justify-end items-end'>
                         <Link to={`/details/${_id}`}  className=' btn btn-primary text-white'>See Details</Link>
                          </div>
