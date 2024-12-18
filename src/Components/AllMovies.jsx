@@ -29,7 +29,7 @@ export default function AllMovies() {
    //// Search the under all movies and show to search releted data
 
    useEffect(()=>{
-      fetch(`http://localhost:3000/movie?searchParams=${search}`)
+      fetch(`https://movie-portal-back.vercel.app/movie?searchParams=${search}`)
        .then(res => res.json())
        .then(data => {
          setAllMovieData(data);

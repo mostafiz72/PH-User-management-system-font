@@ -5,7 +5,7 @@ export default function SingleMovie({ movies }) {
     const { _id, photo, title, genry, duration, year, ratting } = movies;
 
     const handleDetails = (id) => {
-        console.log(id);
+        // console.log(id);
     }
 
     return (

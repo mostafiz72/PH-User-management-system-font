@@ -68,16 +68,16 @@ export default function AddMovies() {
                 }
 
         const MovieInfo = { photo, title, genry, duration, year, ratting, summary, userEmail }
-        console.log(MovieInfo);
+        // console.log(MovieInfo);
 
-        fetch('http://localhost:3000/movie', {
+        fetch('https://movie-portal-back.vercel.app/movie', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(MovieInfo)
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
+                // console.log(data);
                 if (data.insertedId) {
                     Swal.fire({
                         position: "center center",

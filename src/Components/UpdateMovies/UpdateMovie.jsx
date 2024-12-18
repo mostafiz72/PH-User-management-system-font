@@ -24,7 +24,7 @@ export default function UpdateMovie() {
         const movieUpdated = { photo, title, genry, duration, year, ratting, summary }
 
         // Update the movie data in the database
-        fetch(`http://localhost:3000/updatemovie/${_id}`, {
+        fetch(`https://movie-portal-back.vercel.app/updatemovie/${_id}`, {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(movieUpdated)

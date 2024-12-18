@@ -17,7 +17,7 @@ export default function Login() {
     const form = e.target;  // Nutun vabe input form thek data neuya jai ta amara dekhalam
     const email = form.email.value;
     const password = form.password.value;
-    console.log({ email, password })
+    // console.log({ email, password })
 
     SignInUser(email, password)
     .then(result =>{
@@ -50,7 +50,7 @@ export default function Login() {
               <label className="label">
                 <span className="label-text">Password</span>
               </label>
-              <input type="text" name='password' placeholder="password" className="input input-bordered" required />
+              <input type="password" name='password' placeholder="password" className="input input-bordered" required />
               <button className=' text-xl absolute top-[52px] right-5'><IoMdEyeOff /></button>
               <label className="label">
                 <Link to="" className="label-text-alt link link-hover">Forgot password?</Link>

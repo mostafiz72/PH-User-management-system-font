@@ -11,7 +11,7 @@ export default function AuthProvider( { children } ) {
   const [loading, setLoading] = useState(true);
   const [dark, setDark] = useState(false);
   // const [ userEmail, setUserEmail ] = useState("");
-  console.log(user);
+  // console.log(user);
   
 
   /// Sign up user in forms useing ----------------------------

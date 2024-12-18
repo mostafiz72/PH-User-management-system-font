@@ -32,12 +32,12 @@ const router = createBrowserRouter([
       {
         path: "/allmovives",
         element: <AllMovies />,
-        loader: ()=> fetch('http://localhost:3000/movie')
+        loader: ()=> fetch('https://movie-portal-back.vercel.app/movie')
       },
       {
         path: "/details/:id",
         element: <PrivateRoute><MoviesDetails /></PrivateRoute>,
-        loader: ({ params })=> fetch(`http://localhost:3000/details/${params.id}`)
+        loader: ({ params })=> fetch(`https://movie-portal-back.vercel.app/details/${params.id}`)
       },
       {
         path: "/addmovies",
@@ -46,12 +46,12 @@ const router = createBrowserRouter([
       {
         path: "/updatemovie/:id",
         element: <UpdateMovie />,
-        loader: ({ params })=> fetch(`http://localhost:3000/details/${params.id}`)
+        loader: ({ params })=> fetch(`https://movie-portal-back.vercel.app/details/${params.id}`)
       },
       {
         path: "/favoritesmovies",
         element: <FavoritesMovies />,
-        loader: ()=> fetch('http://localhost:3000/addfavorite')
+        loader: ()=> fetch('https://movie-portal-back.vercel.app/addfavorite')
       },
       {
         path: "/extraone",

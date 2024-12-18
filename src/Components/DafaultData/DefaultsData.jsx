@@ -6,10 +6,10 @@ export default function DefaultsData() {
     const [defaultData, setDefaultData] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:3000/six')
+        fetch('https://movie-portal-back.vercel.app/six')
             .then(res => res.json())
             .then(data => {
-                console.log(data);
+                // console.log(data);
                 setDefaultData(data);
             })
     }, [])

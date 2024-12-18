@@ -78,7 +78,7 @@ export default function Register() {
       Navigate("/")
     })
     .catch(err => {
-      console.log(err);
+      // console.log(err);
       
     })
   }
@@ -114,7 +114,7 @@ export default function Register() {
               <label className="label">
                 <span className="label-text">Password</span>
               </label>
-              <input type="text" name='password' placeholder="password" className="input input-bordered" required />
+              <input type="password" name='password' placeholder="password" className="input input-bordered" required />
               <button className=' text-xl absolute top-[52px] right-5'><IoMdEyeOff /></button>
             </div>
             <div className="form-control flex flex-col justify-center w-full">

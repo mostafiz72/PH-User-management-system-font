@@ -4,12 +4,12 @@ import Swal from 'sweetalert2';
 export default function FavoriteMovieData( { favorite, favoriteUpdted, setfavoriteUpdated } ) {
 
      const { photo, title, genry, duration, year, ratting, _id } = favorite;
-     console.log(favoriteUpdted);
+    //  console.log(favoriteUpdted);
      
 
      const favoriteDelete = (id)=>{
-        console.log("favoriteDelete is clicked", id);
-        fetch(`http://localhost:3000/favorite/${id}`, {
+        // console.log("favoriteDelete is clicked", id);
+        fetch(`https://movie-portal-back.vercel.app/favorite/${id}`, {
             method: 'DELETE',
         })
         .then(res => res.json())

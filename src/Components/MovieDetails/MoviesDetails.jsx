@@ -22,7 +22,7 @@ export default function MoviesDetails() {
             confirmButtonText: "Yes, delete it!"
           }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:3000/delete/${id}`, {
+                fetch(`https://movie-portal-back.vercel.app/delete/${id}`, {
                     method: 'DELETE',
                 })
                 .then(response => response.json())
@@ -36,7 +36,7 @@ export default function MoviesDetails() {
                             timer: 2500
                           });
                     }
-                    console.log(data);
+                    // console.log(data);
                     Navigate('/allmovives');
                     
                 })
@@ -53,22 +53,28 @@ export default function MoviesDetails() {
     /// favirite functionality starting .................................
 
     const handleFavirite = ()=>{
-        console.log("handleFavirite is clicked");
+        // console.log("handleFavirite is clicked");
         const faviriteInfo = { photo, title, genry, year, ratting };
-        console.log(faviriteInfo);
+        // console.log(faviriteInfo);
         
 
         /// faviirte and database hitting .....................
 
-        fetch(`http://localhost:3000/addfavorite`, {
+        fetch(`https://movie-portal-back.vercel.app/addfavorite`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(faviriteInfo)
         })
        .then(response => response.json())
        .then(data => {
-         console.log(data);
-         
+        //  console.log(data);
+        Swal.fire({
+            position: "center center",
+            icon: "success",
+            title: "Favorited",
+            showConfirmButton: false,
+            timer: 2500
+          });
        })
         
     }
