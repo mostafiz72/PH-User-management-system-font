@@ -56,6 +56,7 @@ export default function Navbar() {
             {user && user.email ? <li><NavLink to="/favoritesmovies">My Favorites</NavLink></li> : ''}
             {<li><NavLink to="/extraone">Present Movie</NavLink></li>}
             {<li><NavLink to="/extratwo">Movie Shotting</NavLink></li>}
+            {<li><NavLink to="/admin">Admin</NavLink></li>}
           </ul>
         </div>
         <div className=' flex items-center gap-5'>

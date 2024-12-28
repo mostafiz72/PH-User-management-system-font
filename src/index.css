@@ -3,5 +3,7 @@
 @tailwind utilities;
 
 a.active{
-    color: red;
+    color: white;
+    background-image: linear-gradient(to bottom right, #8D5BF5, #D647EF);
+    border: none;
 }

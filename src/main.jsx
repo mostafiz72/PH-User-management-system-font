@@ -2,6 +2,8 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import {
   createBrowserRouter,
+  Navigate,
+  Route,
   RouterProvider,
 } from "react-router-dom";
 import './index.css'
@@ -19,6 +21,11 @@ import MoviesDetails from './Components/MovieDetails/MoviesDetails.jsx';
 import UpdateMovie from './Components/UpdateMovies/UpdateMovie.jsx';
 import AuthProvider from './AuthProviders/AuthProvider.jsx';
 import PrivateRoute from './Components/PrivateRoutes/PrivateRoute.jsx';
+import AdminPanel from './Components/AdminPanel/AdminPanel.jsx';
+import AdvantageTeam from './Components/AdminPanel/AdvantageTeam.jsx';
+import PartnerShipProject from './Components/AdminPanel/PartnerShipProject.jsx';
+import PartnerShipCalls from './Components/AdminPanel/PartnerShipCalls.jsx';
+import UpdateScout from './Components/AdminPanel/UpdateScout.jsx';
 
 const router = createBrowserRouter([
   {
@@ -32,12 +39,12 @@ const router = createBrowserRouter([
       {
         path: "/allmovives",
         element: <AllMovies />,
-        loader: ()=> fetch('https://movie-portal-back.vercel.app/movie')
+        loader: () => fetch('https://movie-portal-back.vercel.app/movie')
       },
       {
         path: "/details/:id",
         element: <PrivateRoute><MoviesDetails /></PrivateRoute>,
-        loader: ({ params })=> fetch(`https://movie-portal-back.vercel.app/details/${params.id}`)
+        loader: ({ params }) => fetch(`https://movie-portal-back.vercel.app/details/${params.id}`)
       },
       {
         path: "/addmovies",
@@ -46,12 +53,12 @@ const router = createBrowserRouter([
       {
         path: "/updatemovie/:id",
         element: <UpdateMovie />,
-        loader: ({ params })=> fetch(`https://movie-portal-back.vercel.app/details/${params.id}`)
+        loader: ({ params }) => fetch(`https://movie-portal-back.vercel.app/details/${params.id}`)
       },
       {
         path: "/favoritesmovies",
         element: <FavoritesMovies />,
-        loader: ()=> fetch('https://movie-portal-back.vercel.app/addfavorite')
+        loader: () => fetch('https://movie-portal-back.vercel.app/addfavorite')
       },
       {
         path: "/extraone",
@@ -69,6 +76,33 @@ const router = createBrowserRouter([
         path: "/register",
         element: <Register />,
       },
+      {
+        path: "/admin",
+        element: <AdminPanel />,
+        children: [
+          {
+            path: "/admin",
+            element: <Navigate to="/admin/advantage" replace />,
+          },
+          {
+            path: "/admin/advantage",
+            element: <AdvantageTeam />,
+          },
+          {
+            path: "/admin/project",
+            element: <PartnerShipProject />,
+          },
+          {
+            path: "/admin/calls",
+            element: <PartnerShipCalls />,
+          },
+          {
+            path: "/admin/update",
+            element: <UpdateScout />,
+          },
+        ],
+      },
+    
     ],
   },
   {
